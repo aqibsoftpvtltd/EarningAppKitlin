@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".SignUp">
+
+    <ImageView
+        android:id="@+id/question"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:src="@drawable/question"
+        android:layout_marginRight="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="70dp">
+
+    </ImageView>
+
+    <TextView
+        android:id="@+id/signup"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/question"
+        android:text="SignUp"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+       >
+
+    </TextView>
+
+    <EditText
+        android:id="@+id/yourName"
+        android:layout_width="350dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="52dp"
+        android:layout_below="@id/signup"
+        android:hint="Your Name"
+        android:layout_marginTop="24dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/edittextbackground">
+
+    </EditText>
+    <EditText
+        android:id="@+id/yourAge"
+        android:layout_width="350dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="52dp"
+        android:layout_below="@id/yourName"
+        android:hint="Your Age"
+        android:layout_marginTop="24dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/edittextbackground">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/yourEmail"
+        android:layout_width="350dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="52dp"
+        android:layout_below="@id/yourAge"
+        android:hint="Enter Your Email"
+        android:layout_marginTop="24dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/edittextbackground">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="350dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="52dp"
+        android:layout_below="@id/yourEmail"
+        android:hint="Enter Your Password"
+        android:layout_marginTop="24dp"
+        android:paddingLeft="15dp"
+        android:background="@drawable/edittextbackground">
+
+    </EditText>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#A6FFFFFF"
+        android:text="Sign Up"
+        android:layout_marginTop="24dp"
+
+        android:layout_below="@id/password"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black">
+
+    </Button>
+
+</RelativeLayout>
+
+</layout>

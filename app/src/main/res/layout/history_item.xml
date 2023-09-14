@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/top2"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/coin">
+
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_vertical"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/earnCoin"
+                android:layout_width="match_parent"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="TextView"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+            <TextView
+                android:id="@+id/timeDate"
+                android:layout_width="match_parent"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:text="TextView"
+                android:textSize="12sp"
+                android:layout_gravity="center_vertical"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/coin"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="TextView"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -3,12 +3,273 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/secondbackground"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.ProfileFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:scrollbars="none">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
 
+    >
+    <ImageView
+        android:id="@+id/userImage"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:src="@drawable/avtar"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="32dp"
+        android:layout_centerHorizontal="true">
+    </ImageView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Name"
+        android:id="@+id/name"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/userImage"
+        android:layout_marginTop="5dp">
+
+    </TextView>
+    <LinearLayout
+        android:id="@+id/personalInfoLyt"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_below="@id/name"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:background="@drawable/textviewshap">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Personal Information"
+            android:id="@+id/personalInfo"
+            android:layout_weight="1"
+            android:layout_marginStart="32dp"
+
+           >
+
+        </TextView>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/downarrow"
+            android:id="@+id/arrow"
+            android:scaleType="centerCrop"
+            android:backgroundTint="@android:color/transparent">
+
+        </ImageButton>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/expandableLyt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/personalInfoLyt"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="10dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/nameLyt"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_below="@id/name"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/textviewshap">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:layout_marginStart="15dp">
+
+            </TextView>
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Aqib"
+                android:id="@+id/nameProfile"
+                android:layout_weight="1"
+                android:layout_marginStart="15dp">
+
+            </TextView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/emailLyt"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_below="@id/name"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/textviewshap">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:layout_marginStart="15dp">
+
+            </TextView>
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="aqib@gmail.com"
+                android:id="@+id/email"
+                android:layout_weight="1"
+                android:layout_marginStart="15dp">
+
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/passLyt"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_below="@id/name"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/textviewshap">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Password"
+                android:layout_marginStart="15dp">
+
+            </TextView>
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="******"
+                android:id="@+id/password"
+                android:layout_weight="1"
+                android:layout_marginStart="15dp">
+
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ageLyt"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/textviewshap">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Age"
+                android:layout_marginStart="15dp">
+
+            </TextView>
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Age"
+                android:id="@+id/age"
+                android:layout_weight="1"
+                android:layout_marginStart="15dp">
+
+            </TextView>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/countryLyt"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:background="@drawable/textviewshap">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Country"
+                android:layout_marginStart="15dp">
+
+            </TextView>
+
+            <TextView
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Pakistan"
+                android:id="@+id/country"
+                android:layout_weight="1"
+                android:layout_marginStart="15dp">
+
+            </TextView>
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="Save"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/white"
+            app:cornerRadius="10dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="20dp">
+
+        </Button>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/logOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Logout"
+        android:layout_below="@id/expandableLyt"
+        android:backgroundTint="@color/white"
+        app:cornerRadius = "10dp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp">
+
+    </Button>
+
+</RelativeLayout>
+    </ScrollView>
 </FrameLayout>

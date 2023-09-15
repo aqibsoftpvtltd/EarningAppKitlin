@@ -6,10 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.earningappkotlin.Adapter.HistoryAdapter
-import com.example.earningappkotlin.Models.HistoryModel
-import com.example.earningappkotlin.R
+import com.example.earningappkotlin.adapter.HistoryAdapter
+import com.example.earningappkotlin.models.HistoryModel
 import com.example.earningappkotlin.databinding.FragmentHistoryBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 
 class HistoryFragment : Fragment() {
@@ -33,6 +33,17 @@ class HistoryFragment : Fragment() {
         var adapter = HistoryAdapter(listHistory)
         binding.historyRecyclerView.adapter = adapter
         binding.historyRecyclerView.setHasFixedSize(true)
+
+        binding.coin.setOnClickListener {
+            val bottomSheetDialog : BottomSheetDialogFragment = Withdrawl()
+            bottomSheetDialog.show(requireActivity().supportFragmentManager,"Test")
+            bottomSheetDialog.enterTransition
+        }
+        binding.withDraw.setOnClickListener {
+            val bottomSheetDialog : BottomSheetDialogFragment = Withdrawl()
+            bottomSheetDialog.show(requireActivity().supportFragmentManager,"Test")
+            bottomSheetDialog.enterTransition
+        }
         return binding.root
     }
 

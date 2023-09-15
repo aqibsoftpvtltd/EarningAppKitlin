@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "829718124557",
+    "project_id": "earningappkotlin",
+    "storage_bucket": "earningappkotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:829718124557:android:3df353c6ddd8da0cb59d44",
+        "android_client_info": {
+          "package_name": "com.example.earningappkotlin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjjFAoeqhhzheKY6iQEFDURDL6CqUQxgM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,9 +1,9 @@
-package com.example.earningappkotlin.Adapter
+package com.example.earningappkotlin.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.earningappkotlin.Models.HistoryModel
+import com.example.earningappkotlin.models.HistoryModel
 import com.example.earningappkotlin.databinding.HistoryItemBinding
 
 class HistoryAdapter (var listHistory : ArrayList<HistoryModel>) :RecyclerView.Adapter<HistoryAdapter.HistoryCoinViewHolder>() {

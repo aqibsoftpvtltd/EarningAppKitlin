@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.earningappkotlin.R
 import com.example.earningappkotlin.databinding.FragmentSpinBinding
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlin.random.Random
 
 
@@ -19,6 +20,16 @@ class SpinFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = FragmentSpinBinding.inflate(inflater,container, false)
         // Inflate the layout for this fragment
+        binding.coin.setOnClickListener {
+            val bottomSheetDialog : BottomSheetDialogFragment = Withdrawl()
+            bottomSheetDialog.show(requireActivity().supportFragmentManager,"Test")
+            bottomSheetDialog.enterTransition
+        }
+        binding.withDraw.setOnClickListener {
+            val bottomSheetDialog : BottomSheetDialogFragment = Withdrawl()
+            bottomSheetDialog.show(requireActivity().supportFragmentManager,"Test")
+            bottomSheetDialog.enterTransition
+        }
         return binding.root
     }
 

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/secondbackground"
+    tools:context=".QuizActivity">
+
+    <LinearLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/avtar">
+
+        </ImageView>
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="TextView"
+            android:layout_gravity="center_vertical"
+            android:layout_height="wrap_content">
+
+        </TextView>
+        <ImageView
+            android:id="@+id/withDraw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/coin">
+
+        </ImageView>
+        <TextView
+            android:id="@+id/coin"
+            android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:text="TextView"
+            android:layout_height="wrap_content">
+
+        </TextView>
+
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/questionImage"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:src="@drawable/scince1"
+        android:layout_below="@id/top"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="32dp"
+        android:layout_centerHorizontal="true">
+    </ImageView>
+
+    <TextView
+        android:id="@+id/questionText"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="Question:"
+        android:layout_below="@id/questionImage"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content">
+
+    </TextView>
+    <TextView
+        android:id="@+id/question"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="What is your name:"
+        android:layout_below="@id/questionText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/selectText"
+        android:layout_gravity="center_vertical"
+        android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:text="Select one of these"
+        android:layout_below="@id/question"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_height="wrap_content">
+
+    </TextView>
+
+    <Button
+        android:id="@+id/option1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/selectText"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        app:cornerRadius = "10dp"
+        android:text="Option 1"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp">
+
+    </Button>
+    <Button
+        android:id="@+id/option2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/option1"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        app:cornerRadius = "10dp"
+        android:text="Option 2"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp">
+
+    </Button>
+    <Button
+        android:id="@+id/option3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/option2"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        app:cornerRadius = "10dp"
+        android:text="Option 3"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp">
+
+    </Button>
+
+
+    <Button
+        android:id="@+id/option4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/option3"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        app:cornerRadius = "10dp"
+        android:text="Option 4"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/nextQuestion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/option4"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/black"
+        android:layout_centerHorizontal="true"
+        app:cornerRadius = "10dp"
+        android:text="Next Question"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="40dp">
+
+    </Button>
+
+
+</RelativeLayout>

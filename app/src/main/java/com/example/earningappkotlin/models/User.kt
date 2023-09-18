@@ -2,10 +2,10 @@ package com.example.earningappkotlin.models
 
 class User {
 
-    private var name =""
-    private var age =0
-    private var email = ""
-    private var password = ""
+     var name =""
+     var age =0
+     var email = ""
+     var password = ""
 
     constructor()
     constructor(name: String, age: Int, email: String, password: String) {

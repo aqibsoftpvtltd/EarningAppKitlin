@@ -7,6 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.earningappkotlin.R
 import com.example.earningappkotlin.databinding.FragmentProfileBinding
+import com.example.earningappkotlin.models.User
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
 
 class ProfileFragment : Fragment() {
 
@@ -34,6 +42,24 @@ class ProfileFragment : Fragment() {
             isExpand =! isExpand
 
         }
+
+        Firebase.database.reference.child("Users").child(Firebase.auth.currentUser!!.uid).addValueEventListener(
+            object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    var user = snapshot.getValue<User>()
+                    binding.name.text=user?.name
+                    binding.nameProfile.text=user?.name
+                    binding.email.text=user?.email
+                    binding.password.text=user?.password
+                    binding.age.text=user?.age.toString()
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            }
+        )
         return binding.root
     }
 

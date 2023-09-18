@@ -32,7 +32,7 @@ class SignUp : AppCompatActivity() {
                     if (it.isSuccessful){
                         var user = User(binding.yourName.text.toString(),binding.yourAge.text.toString().toInt(), binding.yourEmail.text.toString(),binding.password.text.toString())
                         Firebase.database.reference.child("Users")
-                            .child(Firebase.auth.currentUser!!.uid).setValue(user).addOnSuccessListener { startActivity(Intent(this@SignUp,MainActivity::class.java))
+                            .child(Firebase.auth.currentUser!!.uid).setValue(user).addOnSuccessListener { startActivity(Intent(this@SignUp,HomeActivity::class.java))
                                 finish() }
 
                     }
@@ -47,7 +47,7 @@ class SignUp : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if (Firebase.auth.currentUser!=null){
-            startActivity(Intent(this@SignUp,MainActivity::class.java))
+            startActivity(Intent(this@SignUp,HomeActivity::class.java))
             finish()
         }
     }

@@ -9,7 +9,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.example.earningappkotlin.R
 import com.example.earningappkotlin.databinding.FragmentSpinBinding
+import com.example.earningappkotlin.models.User
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
+import com.google.firebase.ktx.Firebase
 import kotlin.random.Random
 
 
@@ -30,6 +38,22 @@ class SpinFragment : Fragment() {
             bottomSheetDialog.show(requireActivity().supportFragmentManager,"Test")
             bottomSheetDialog.enterTransition
         }
+
+        Firebase.database.reference.child("Users").child(Firebase.auth.currentUser!!.uid).addValueEventListener(
+            object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    var user = snapshot.getValue<User>()
+                    binding.name.text=user?.name
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            }
+        )
+
         return binding.root
     }
 
@@ -40,6 +64,9 @@ class SpinFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
+
 
         binding.spin.setOnClickListener{
                 binding.spin.isEnabled =false

@@ -7,7 +7,14 @@ import android.widget.Toast
 import com.example.earningappkotlin.databinding.ActivityQuizBinding
 import com.example.earningappkotlin.fragments.Withdrawl
 import com.example.earningappkotlin.models.Question
+import com.example.earningappkotlin.models.User
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.firestore.core.View
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -19,6 +26,7 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var questionList :ArrayList<Question>
     var currentQuestion = 0
     var score = 0
+    var currentChance =0L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -26,6 +34,38 @@ class QuizActivity : AppCompatActivity() {
         questionList = ArrayList<Question>()
         var image = intent.getIntExtra("categoryImage",0)
         var catText = intent.getStringExtra("questionType")
+
+        Firebase.database.reference.child("PlayChance").child(Firebase.auth.currentUser!!.uid)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()){
+                        currentChance = snapshot.value as Long
+                    }
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+
+            })
+
+        Firebase.database.reference.child("Users").child(Firebase.auth.currentUser!!.uid).addValueEventListener(
+            object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+
+                    var user = snapshot.getValue<User>()
+                    binding.name.text=user?.name
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            }
+        )
+
+
         Firebase.firestore.collection("Questions").document(catText.toString()).collection("question1").get().addOnSuccessListener {
             questionData ->
             questionList.clear()
@@ -75,12 +115,17 @@ class QuizActivity : AppCompatActivity() {
 
     private fun nextQuestionAndScoreUpdate(s:String) {
 
-        if (s == questionList.get(currentQuestion).ans){
+        if (s == questionList[currentQuestion].ans){
             score+=10
         }
         currentQuestion++
         if (currentQuestion>=questionList.size){
             if (score>=20){
+
+
+                Firebase.database.reference.child("PlayChance").child(Firebase.auth.currentUser!!.uid).setValue(currentChance+1)
+
+
 
                 binding.winner.visibility = android.view.View.VISIBLE
                 binding.mainLyt.visibility = android.view.View.GONE

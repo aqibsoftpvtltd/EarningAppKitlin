@@ -18,6 +18,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import java.util.Collections
 
 
 class HistoryFragment : Fragment() {
@@ -25,48 +26,88 @@ class HistoryFragment : Fragment() {
         FragmentHistoryBinding.inflate(layoutInflater)
     }
     private val listHistory = ArrayList<HistoryModel>()
+    private val listHistoryReverse = ArrayList<HistoryModel>()
+    lateinit var adapter : HistoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        listHistory.add(HistoryModel("12:03","200"))
-        listHistory.add(HistoryModel("12:34","300"))
-        listHistory.add(HistoryModel("12:06","100"))
-        listHistory.add(HistoryModel("12:43","500"))
-    }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-
-        binding.historyRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        var adapter = HistoryAdapter(listHistory)
-        binding.historyRecyclerView.adapter = adapter
-        binding.historyRecyclerView.setHasFixedSize(true)
-
-        binding.coin.setOnClickListener {
-            val bottomSheetDialog : BottomSheetDialogFragment = Withdrawl()
-            bottomSheetDialog.show(requireActivity().supportFragmentManager,"Test")
-            bottomSheetDialog.enterTransition
-        }
-        binding.withDraw.setOnClickListener {
-            val bottomSheetDialog : BottomSheetDialogFragment = Withdrawl()
-            bottomSheetDialog.show(requireActivity().supportFragmentManager,"Test")
-            bottomSheetDialog.enterTransition
-        }
-
-        Firebase.database.reference.child("Users").child(Firebase.auth.currentUser!!.uid).addValueEventListener(
-            object : ValueEventListener {
+         adapter = HistoryAdapter(listHistory)
+        Firebase.database.reference.child("playerCoinHistory").child(Firebase.auth.currentUser!!.uid)
+            .addValueEventListener(object :ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
+                   listHistory.clear()
+                    for (dataSnapshot in snapshot.children){
 
-                    var user = snapshot.getValue<User>()
-                    binding.name.text=user?.name
+                        var  data = dataSnapshot.getValue(HistoryModel::class.java)
+                        listHistory.add(data!!)
 
+                    }
+                    listHistory.reverse()
+
+                    adapter.notifyDataSetChanged()
                 }
 
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
-            }
-        )
+            })
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+
+        binding.historyRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+
+        binding.historyRecyclerView.adapter = adapter
+        binding.historyRecyclerView.setHasFixedSize(true)
+
+        binding.coin.setOnClickListener {
+            val bottomSheetDialog: BottomSheetDialogFragment = Withdrawl()
+            bottomSheetDialog.show(requireActivity().supportFragmentManager, "Test")
+            bottomSheetDialog.enterTransition
+        }
+        binding.withDraw.setOnClickListener {
+            val bottomSheetDialog: BottomSheetDialogFragment = Withdrawl()
+            bottomSheetDialog.show(requireActivity().supportFragmentManager, "Test")
+            bottomSheetDialog.enterTransition
+        }
+
+        Firebase.database.reference.child("Users").child(Firebase.auth.currentUser!!.uid)
+            .addValueEventListener(
+                object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+
+                        var user = snapshot.getValue<User>()
+                        binding.name.text = user?.name
+
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        TODO("Not yet implemented")
+                    }
+                }
+            )
+        Firebase.database.reference.child("playerCoin").child(Firebase.auth.currentUser!!.uid)
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()) {
+                        binding.coin.text = snapshot.value.toString()
+
+
+                    }
+
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                }
+
+            })
+
 
         return binding.root
     }

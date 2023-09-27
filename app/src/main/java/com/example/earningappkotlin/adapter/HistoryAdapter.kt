@@ -5,8 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.earningappkotlin.models.HistoryModel
 import com.example.earningappkotlin.databinding.HistoryItemBinding
+import java.sql.Timestamp
+import java.util.Date
 
-class HistoryAdapter (var listHistory : ArrayList<HistoryModel>) :RecyclerView.Adapter<HistoryAdapter.HistoryCoinViewHolder>() {
+class HistoryAdapter (private var listHistory : ArrayList<HistoryModel>) :RecyclerView.Adapter<HistoryAdapter.HistoryCoinViewHolder>() {
 
     class HistoryCoinViewHolder (var binding : HistoryItemBinding) : RecyclerView.ViewHolder(binding.root){
 
@@ -19,7 +21,17 @@ class HistoryAdapter (var listHistory : ArrayList<HistoryModel>) :RecyclerView.A
     override fun getItemCount() = listHistory.size
 
     override fun onBindViewHolder(holder: HistoryCoinViewHolder, position: Int) {
-        holder.binding.timeDate.text = listHistory[position].timeDate
+
+        val timeStamp = Timestamp(listHistory[position].timeDate.toLong())
+        holder.binding.timeDate.text = Date(timeStamp.time).toString()
         holder.binding.coin.text =listHistory[position].coin
+
+        if (listHistory[position].isWithDrawal){
+            holder.binding.status.text = "- Money Withdrawal"
+        }
+        else{
+            holder.binding.status.text = "+ Money Added"
+        }
+
     }
 }

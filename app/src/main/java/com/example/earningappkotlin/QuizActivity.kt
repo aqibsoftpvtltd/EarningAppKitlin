@@ -64,6 +64,20 @@ class QuizActivity : AppCompatActivity() {
                 }
             }
         )
+        Firebase.database.reference.child("playerCoin").child(Firebase.auth.currentUser!!.uid)
+            .addValueEventListener(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (snapshot.exists()){
+                        binding.coin.text  = snapshot.value.toString()
+
+
+                    }
+
+                }
+                override fun onCancelled(error: DatabaseError) {
+                }
+
+            })
 
 
         Firebase.firestore.collection("Questions").document(catText.toString()).collection("question1").get().addOnSuccessListener {
